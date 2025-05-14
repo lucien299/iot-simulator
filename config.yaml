@@ -1,0 +1,14 @@
+mqtt:
+  broker: "tcp://localhost:1883"
+  username: "test"
+  password: "test"
+  qos: 1
+
+
+simulation:
+  device_count: 50000
+  frequency: "0.1s"
+  duration: "1m"
+
+topics:
+  temperature_humidity_sensor: "iot/sensors/temp_humidity"
