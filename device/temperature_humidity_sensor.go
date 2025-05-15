@@ -25,7 +25,7 @@ func NewTemperatureHumidityDevice(id string, cfg *config.Config, client *my_mqtt
 	return &TemperatureHumidityDevice{
 		BaseDevice: BaseDevice{
 			ID:     id,
-			Topic:  fmt.Sprintf(cfg.Topic.TemperatureHumiditySensorTopic),
+			Topic:  fmt.Sprintf(cfg.Topic.TemperatureHumiditySensorTopic, id),
 			Config: cfg,
 			Client: client,
 		},
@@ -56,7 +56,7 @@ func (t TemperatureHumidityDevice) Run() {
 				log.Printf("Failed to generate data: %v", err)
 				continue
 			}
-			err = t.Client.Publish(t.Config.Topic.TemperatureHumiditySensorTopic, data)
+			err = t.Client.Publish(t.Topic, data)
 			if err != nil {
 				log.Printf("Device %d Failed to publish data: %v\n", t.ID, err)
 			}

@@ -2,7 +2,6 @@ package my_mqtt
 
 import (
 	"errors"
-	"fmt"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	"log"
 	"time"
@@ -38,7 +37,6 @@ func NewClient(opts MQTTOptions) (*MQTTClient, error) {
 	})
 
 	client := mqtt.NewClient(clientOpts)
-	fmt.Printf("clientOpts:%v", clientOpts)
 	//token代表的操作状态
 	token := client.Connect()
 	if !token.WaitTimeout(5*time.Second) || token.Error() != nil {

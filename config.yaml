@@ -6,9 +6,9 @@ mqtt:
 
 
 simulation:
-  device_count: 50000
-  frequency: "0.1s"
+  device_count: 10
+  frequency: "1s"
   duration: "1m"
 
 topics:
-  temperature_humidity_sensor: "iot/sensors/temp_humidity"
+  temperature_humidity_sensor: "iot/sensors/temp_humidity/%s"
