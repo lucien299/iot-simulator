@@ -1,7 +1,8 @@
-package mqtt
+package my_mqtt
 
 import (
 	"errors"
+	"fmt"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	"log"
 	"time"
@@ -31,17 +32,18 @@ func NewClient(opts MQTTOptions) (*MQTTClient, error) {
 		SetPassword(opts.Password).
 		SetConnectRetry(true).
 		SetAutoReconnect(true).SetConnectionLostHandler(func(client mqtt.Client, err error) {
-		log.Println("mqtt connection lost:", err)
+		log.Println("my_mqtt connection lost:", err)
 	}).SetOnConnectHandler(func(client mqtt.Client) {
-		log.Println("mqtt connection success")
+		log.Println("my_mqtt connection success")
 	})
 
 	client := mqtt.NewClient(clientOpts)
+	fmt.Printf("clientOpts:%v", clientOpts)
 	//token代表的操作状态
 	token := client.Connect()
 	if !token.WaitTimeout(5*time.Second) || token.Error() != nil {
-		log.Println("mqtt connection error: %v", token.Error())
-		return nil, errors.New("mqtt connection error")
+		log.Println("my_mqtt connection error: %v", token.Error())
+		return nil, errors.New("my_mqtt connection error")
 	}
 
 	return &MQTTClient{

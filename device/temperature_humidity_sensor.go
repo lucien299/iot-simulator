@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"iot-simulator/config"
-	"iot-simulator/mqtt"
+	"iot-simulator/my_mqtt"
 	"log"
 	"math/rand"
 	"time"
@@ -21,7 +21,7 @@ type TemperatureHumidityDevice struct {
 	BaseDevice
 }
 
-func NewTemperatureHumidityDevice(id string, cfg *config.Config, client *mqtt.MQTTClient) *TemperatureHumidityDevice {
+func NewTemperatureHumidityDevice(id string, cfg *config.Config, client *my_mqtt.MQTTClient) *TemperatureHumidityDevice {
 	return &TemperatureHumidityDevice{
 		BaseDevice: BaseDevice{
 			ID:     id,

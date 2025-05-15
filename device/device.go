@@ -2,7 +2,7 @@ package device
 
 import (
 	"iot-simulator/config"
-	"iot-simulator/mqtt"
+	"iot-simulator/my_mqtt"
 )
 
 //公共基础设施
@@ -16,7 +16,7 @@ type Device interface {
 type BaseDevice struct {
 	ID     string
 	Topic  string
-	Client *mqtt.MQTTClient
+	Client *my_mqtt.MQTTClient
 	Config *config.Config
 }
 

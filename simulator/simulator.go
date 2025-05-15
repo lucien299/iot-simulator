@@ -3,13 +3,13 @@ package simulator
 import (
 	"iot-simulator/config"
 	"iot-simulator/device"
-	"iot-simulator/mqtt"
+	"iot-simulator/my_mqtt"
 	"log"
 	"strconv"
 	"sync"
 )
 
-func StartSimulation(cfg *config.Config, client mqtt.MQTTClient) {
+func StartSimulation(cfg *config.Config, client my_mqtt.MQTTClient) {
 	log.Printf("Starting simulation with %d devices", cfg.Simulation.DeviceCount)
 	var wg sync.WaitGroup
 

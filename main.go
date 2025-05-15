@@ -2,7 +2,7 @@ package main
 
 import (
 	"iot-simulator/config"
-	"iot-simulator/mqtt"
+	"iot-simulator/my_mqtt"
 	"iot-simulator/simulator"
 	"log"
 )
@@ -13,13 +13,13 @@ func main() {
 		panic(err)
 	}
 
-	client, err := mqtt.NewClient(mqtt.MQTTOptions{
+	client, err := my_mqtt.NewClient(my_mqtt.MQTTOptions{
 		Broker:   cfg.MQTT.Broker,
 		Username: cfg.MQTT.Username,
 		Password: cfg.MQTT.Password,
 		Topic:    cfg.Topic.TemperatureHumiditySensorTopic,
-		QoS:      0,
-		ClientID: "",
+		QoS:      1,
+		ClientID: "go_sim",
 	})
 	if err != nil {
 		log.Fatalf("MQTT connection error: %v", err)
